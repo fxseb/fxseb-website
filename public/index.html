@@ -4,6 +4,9 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
+body{overflow-x:clip}
+#performance div{min-width:0}
+[style*="overflow-x: auto"]{max-width:100%;position:relative;-webkit-overflow-scrolling:touch}
 body{margin:0;background:#141416;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 a{color:#ECEAE6;transition:color .3s,background-color .3s,border-color .3s,opacity .3s}
 a:hover{color:#FFFFFF}
@@ -75,7 +78,7 @@ b.addEventListener('click',function(){if(a.paused){a.play()}else{a.pause()}});
 a.addEventListener('play',function(){s(true)});a.addEventListener('pause',function(){s(false)});a.addEventListener('ended',function(){a.currentTime=0;s(false)});
 a.addEventListener('timeupdate',u);a.addEventListener('loadedmetadata',u);})();</script>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); border-top: 1px solid #2C2C31; border-bottom: 1px solid #2C2C31">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); border-top: 1px solid #2C2C31; border-bottom: 1px solid #2C2C31">
 <div style="padding: 36px 16px; display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center">
 <div style="font-family: Inter, sans-serif; font-weight: 300; font-size: 38px; letter-spacing: -0.01em; line-height: 1; color: #ECEAE6">7+</div>
 <div style="font-family: Inter, sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.08em; color: #A6A39D">YEARS IN THE MARKETS</div>
@@ -98,7 +101,7 @@ a.addEventListener('timeupdate',u);a.addEventListener('loadedmetadata',u);})();<
 
 <section aria-label="Verification" style="background: #141416">
 <div style="max-width: 1280px; margin: 0 auto; padding: 0 32px 40px">
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: #2C2C31; border: 1px solid #2C2C31">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 1px; background: #2C2C31; border: 1px solid #2C2C31">
 <div style="background: #17171A"><div style="display: flex; align-items: center; gap: 16px; padding: 28px 24px"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><path d="M12 2.5l7.5 2.8v5.4c0 4.6-3.1 8.1-7.5 9.8-4.4-1.7-7.5-5.2-7.5-9.8V5.3z" fill="none" stroke="#DAD7D1" stroke-width="1.2"></path><path d="M8.5 12l2.4 2.4 4.6-4.8" fill="none" stroke="#DAD7D1" stroke-width="1.2"></path></svg><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-family: Inter, sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.1em; color: #ECEAE6">TRACK RECORD VERIFIED</div><div style="font-size: 13px; color: #A6A39D">Independently on Myfxbook</div></div></div></div>
 <div style="background: #17171A"><div style="display: flex; align-items: center; gap: 16px; padding: 28px 24px"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><circle cx="8" cy="15" r="4" fill="none" stroke="#DAD7D1" stroke-width="1.2"></circle><path d="M11 12l9-9M17 6l2.5 2.5M14.5 8.5L17 11" fill="none" stroke="#DAD7D1" stroke-width="1.2"></path></svg><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-family: Inter, sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.1em; color: #ECEAE6">TRADING PRIVILEGES VERIFIED</div><div style="font-size: 13px; color: #A6A39D">Confirmed account ownership</div></div></div></div>
 <div style="background: #17171A"><div style="display: flex; align-items: center; gap: 16px; padding: 28px 24px"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><path d="M3 9.5L12 4l9 5.5M4.5 10v8M9.5 10v8M14.5 10v8M19.5 10v8M3 20h18" fill="none" stroke="#DAD7D1" stroke-width="1.2"></path></svg><div style="display: flex; flex-direction: column; gap: 4px"><div style="font-family: Inter, sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.1em; color: #ECEAE6">CAPITAL AT THE BROKER</div><div style="font-size: 13px; color: #A6A39D">Held in your own account</div></div></div></div>
@@ -230,7 +233,7 @@ a.addEventListener('timeupdate',u);a.addEventListener('loadedmetadata',u);})();<
 </div>
 <p style="margin: 0; max-width: 400px; font-size: 15px; line-height: 1.8; color: #A6A39D">Most ideas never make it. Only strategies that survive every stage are allowed to trade real capital.</p>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 40px">
 <div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #ECEAE6; padding-top: 28px">
 <div style="font-family: Cormorant Garamond, serif; font-weight: 300; font-size: 48px; line-height: 1; color: #5E5C58">01</div>
 <h3 style="margin: 0; font-family: Cormorant Garamond, serif; font-weight: 400; font-size: 26px; color: #ECEAE6">Research</h3>
@@ -319,7 +322,7 @@ a.addEventListener('timeupdate',u);a.addEventListener('loadedmetadata',u);})();<
 <h2 style="margin: 0; font-family: Cormorant Garamond, serif; font-weight: 300; font-size: clamp(40px, 5vw, 68px); line-height: 1.05; color: #ECEAE6">Under exclusive agreement.</h2>
 <p style="margin: 0; display: inline-flex; align-items: center; gap: 12px; font-family: Inter, sans-serif; font-size: 15px; letter-spacing: 0.04em; color: #BDB9B1"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #BDB9B1; flex: none"></span>Currently not open to new partnerships.</p>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1px; background: #2C2C31; border: 1px solid #2C2C31">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); gap: 1px; background: #2C2C31; border: 1px solid #2C2C31">
 <div class="card" style="background: #1A1A1D; border: 1px solid transparent; padding: 56px; display: flex; flex-direction: column; gap: 24px">
 <div style="font-family: Inter, sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.13em; color: #A6A39D">COMMUNITY</div>
 <h3 style="margin: 0; font-family: Cormorant Garamond, serif; font-weight: 400; font-size: 38px; line-height: 1.1; color: #ECEAE6">The private circle.</h3>
