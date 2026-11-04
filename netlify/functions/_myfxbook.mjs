@@ -63,23 +63,10 @@ export async function syncPerformance() {
     }
     if (lastMonth) monthly[lastMonth] = ((1 + lastVal / 100) / (1 + prevEnd / 100) - 1) * 100;
 
-    // Closed trades -> trade count, win rate, profit factor
-    let trades = null, winRate = null, profitFactor = num(acc.profitFactor);
-    try {
-      const { history = [] } = await call("get-history.json", { session, id: accountId });
-      const closed = history.filter((t) => t.closeTime && /buy|sell/i.test(t.action || ""));
-      if (closed.length) {
-        const net = closed.map((t) => num(t.profit) + (num(t.commission) || 0) + (num(t.interest) || 0));
-        const wins = net.filter((x) => x > 0);
-        const gross = wins.reduce((a, b) => a + b, 0);
-        const loss = Math.abs(net.filter((x) => x < 0).reduce((a, b) => a + b, 0));
-        trades = closed.length;
-        winRate = (wins.length / closed.length) * 100;
-        if (profitFactor === null && loss > 0) profitFactor = gross / loss;
-      }
-    } catch (e) {
-      console.warn("history unavailable:", e.message);
-    }
+    // Note: the Myfxbook API history endpoint only returns a limited number of
+    // recent trades, so trade count and win rate are not derived from it.
+    // The website keeps its static values for those two figures.
+    const trades = null, winRate = null, profitFactor = num(acc.profitFactor);
 
     const now = new Date();
     const year = String(now.getUTCFullYear());

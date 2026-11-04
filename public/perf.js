@@ -90,9 +90,9 @@
       set('fx-t-gain', pct(d.ytd, true));
       set('fx-t-dd', pct(d.drawdown));
       set('fx-t-month', pct(d.monthlyAvg, true));
-      set('fx-t-pf', d.profitFactor != null ? Number(d.profitFactor).toFixed(2) : '—');
-      set('fx-t-win', d.winRate != null ? Math.round(d.winRate) + '%' : '—');
-      set('fx-t-trades', d.trades != null ? String(d.trades) : '—');
+      if (d.profitFactor != null) set('fx-t-pf', Number(d.profitFactor).toFixed(2));
+      if (d.winRate != null) set('fx-t-win', Math.round(d.winRate) + '%');
+      if (d.trades != null) set('fx-t-trades', String(d.trades));
       set('fx-r-month', pct(d.monthGain, true), d.monthGain >= 0 ? GREEN : RED);
       set('fx-r-ytd', pct(d.ytd, true), d.ytd >= 0 ? GREEN : RED);
       set('fx-r-total', pct(d.gain, true), d.gain >= 0 ? GREEN : RED);
