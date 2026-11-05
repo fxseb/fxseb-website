@@ -7,7 +7,7 @@ const MAX_AGE = 26 * 3600 * 1000;
 export default async () => {
   let data = null;
   try { data = await readPerformance(); } catch {}
-  const stale = !data || Date.now() - new Date(data.asOf).getTime() > MAX_AGE;
+  const stale = !data || !data.strategies || Date.now() - new Date(data.asOf).getTime() > MAX_AGE;
   if (stale) {
     try { data = await syncPerformance(); } catch (e) { console.error(e.message); }
   }

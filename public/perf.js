@@ -75,6 +75,33 @@
     body.innerHTML = html;
   }
 
+
+  function strategiesTable(list) {
+    var body = $('fx-strategies'); if (!body || !list || !list.length) return;
+    var esc = function (x) { return String(x).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+    var col = function (v) { return v == null ? '#94918B' : (v >= 0 ? GREEN : RED); };
+    var html = '';
+    list.forEach(function (s) {
+      var sp = s.spark || [], mn = Math.min.apply(null, sp.concat([0])), mx = Math.max.apply(null, sp.concat([0])), n = Math.max(1, sp.length - 1), d = '';
+      sp.forEach(function (v, i) { d += (i ? ' L' : 'M') + (i * 240 / n).toFixed(1) + ' ' + (84 - (v - mn) * (78 / ((mx - mn) || 1))).toFixed(1); });
+      var since = s.liveSince ? (MONTHS[+s.liveSince.slice(5, 7) - 1] + ' ' + s.liveSince.slice(0, 4)) : '—';
+      html += '<tr class="row" style="border-top: 1px solid #2C2C31; color: #DAD7D1; text-align: right">' +
+        '<th scope="row" style="padding: 24px 16px 24px 0; text-align: left; font-weight: 400"><div style="display: flex; align-items: center; gap: 14px">' +
+        '<div aria-hidden="true" style="width: 6px; height: 6px; border-radius: 999px; background: #7FC79A; flex: none"></div>' +
+        '<div style="display: flex; flex-direction: column; gap: 6px"><div style="font-family: Cormorant Garamond, serif; font-size: 22px; color: #ECEAE6">' + esc(s.name) + '</div>' +
+        '<div style="font-size: 10.5px; letter-spacing: 0.12em; color: #94918B">' + esc(s.market) + ' · AUTOMATED</div></div></div></th>' +
+        '<td style="padding: 24px 16px; text-align: left"><svg viewBox="0 0 240 90" preserveAspectRatio="none" style="width: 140px; height: 40px; display: block" aria-hidden="true">' +
+        (d ? '<path d="' + d + ' L240 90 L0 90 Z" fill="#ECEAE6" fill-opacity="0.05"></path><path d="' + d + '" fill="none" stroke="#DAD7D1" stroke-width="2" vector-effect="non-scaling-stroke"></path>' : '') + '</svg></td>' +
+        '<td style="padding: 24px 16px; color: ' + col(s.monthGain) + '">' + pct(s.monthGain, true) + '</td>' +
+        '<td style="padding: 24px 16px; color: ' + col(s.ytd) + '">' + pct(s.ytd, true) + '</td>' +
+        '<td style="padding: 24px 16px; color: ' + col(s.gain) + '">' + pct(s.gain, true) + '</td>' +
+        '<td style="padding: 24px 16px; color: #DAD7D1">' + pct(s.drawdown) + '</td>' +
+        '<td style="padding: 24px 16px; color: #BDB9B1">' + since + '</td>' +
+        '<td style="padding: 24px 0 24px 16px"><a class="btn-line" href="' + esc(s.url) + '" target="_blank" rel="noopener" style="display: inline-block; text-decoration: none; border: 1px solid #3A3A3F; color: #ECEAE6; padding: 10px 14px; font-size: 10.5px; letter-spacing: 0.12em; white-space: nowrap">MYFXBOOK ↗</a></td></tr>';
+    });
+    body.innerHTML = html;
+  }
+
   fetch('/api/performance', { cache: 'no-store' })
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (d) {
@@ -97,6 +124,7 @@
       set('fx-r-dd', pct(d.drawdown));
       chart(d.growth);
       if (d.monthly) monthly(d.monthly);
+      if (d.strategies) strategiesTable(d.strategies);
     })
     .catch(function () {});
 })();
