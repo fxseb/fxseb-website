@@ -39,9 +39,9 @@
     var lastV = vals[vals.length - 1];
     svg.setAttribute('aria-label', 'Equity growth since ' + lbl(first) + ': ' + pct(lastV, true));
     svg.innerHTML = g +
-      '<path d="' + d + ' L712 ' + Y(0).toFixed(1) + ' L0 ' + Y(0).toFixed(1) + ' Z" fill="#ECEAE6" fill-opacity="0.05"></path>' +
-      '<path d="' + d + '" fill="none" stroke="#ECEAE6" stroke-width="1.4" stroke-linejoin="round"></path>' +
-      '<circle cx="712" cy="' + Y(lastV).toFixed(1) + '" r="3.5" fill="#ECEAE6"></circle>' +
+      '<path d="' + d + ' L712 ' + Y(0).toFixed(1) + ' L0 ' + Y(0).toFixed(1) + ' Z" fill="#4FB8B5" fill-opacity="0.09"></path>' +
+      '<path d="' + d + '" fill="none" stroke="#4FB8B5" stroke-width="1.6" stroke-linejoin="round"></path>' +
+      '<circle cx="712" cy="' + Y(lastV).toFixed(1) + '" r="3.5" fill="#4FB8B5"></circle>' +
       '<text x="0" y="274" fill="#94918B" font-family="Inter, sans-serif" font-size="11">' + lbl(first) + '</text>' +
       '<text x="712" y="274" fill="#94918B" font-family="Inter, sans-serif" font-size="11" text-anchor="end">' + lbl(last) + '</text>';
 
@@ -49,7 +49,7 @@
     if (sp) {
       var sd = '';
       growth.forEach(function (p, i) { sd += (i ? ' L' : 'M') + (i * 240 / n).toFixed(1) + ' ' + (84 - (p[1] - min) * (78 / (max - min || 1))).toFixed(1); });
-      sp.innerHTML = '<path d="' + sd + ' L240 90 L0 90 Z" fill="#ECEAE6" fill-opacity="0.05"></path><path d="' + sd + '" fill="none" stroke="#DAD7D1" stroke-width="2" vector-effect="non-scaling-stroke"></path>';
+      sp.innerHTML = '<path d="' + sd + ' L240 90 L0 90 Z" fill="#4FB8B5" fill-opacity="0.09"></path><path d="' + sd + '" fill="none" stroke="#4FB8B5" stroke-width="2" vector-effect="non-scaling-stroke"></path>';
     }
   }
 
@@ -91,7 +91,7 @@
         '<div style="display: flex; flex-direction: column; gap: 6px"><div style="font-family: Cormorant Garamond, serif; font-size: 22px; color: #ECEAE6">' + esc(s.name) + '</div>' +
         '<div style="font-size: 10.5px; letter-spacing: 0.12em; color: #94918B">' + esc(s.market) + ' · AUTOMATED</div></div></div></th>' +
         '<td style="padding: 24px 16px; text-align: left"><svg viewBox="0 0 240 90" preserveAspectRatio="none" style="width: 140px; height: 40px; display: block" aria-hidden="true">' +
-        (d ? '<path d="' + d + ' L240 90 L0 90 Z" fill="#ECEAE6" fill-opacity="0.05"></path><path d="' + d + '" fill="none" stroke="#DAD7D1" stroke-width="2" vector-effect="non-scaling-stroke"></path>' : '') + '</svg></td>' +
+        (d ? '<path d="' + d + ' L240 90 L0 90 Z" fill="#4FB8B5" fill-opacity="0.09"></path><path d="' + d + '" fill="none" stroke="#4FB8B5" stroke-width="2" vector-effect="non-scaling-stroke"></path>' : '') + '</svg></td>' +
         '<td style="padding: 24px 16px; color: ' + col(s.monthGain) + '">' + pct(s.monthGain, true) + '</td>' +
         '<td style="padding: 24px 16px; color: ' + col(s.ytd) + '">' + pct(s.ytd, true) + '</td>' +
         '<td style="padding: 24px 16px; color: ' + col(s.gain) + '">' + pct(s.gain, true) + '</td>' +
